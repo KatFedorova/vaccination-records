@@ -1,0 +1,58 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" th:href="@{static/css/style.css}">
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+</head>
+
+<body class="page">
+  <header class="page-header">
+    <div class="page_layout">
+      <div class="page-header__container">
+        <a class="page_header__logo" href="index.html">
+          <svg class="page_header__logo-img" width="70" height="21"></svg>
+        </a>
+        <nav class="page-header__nav" id="navbar">
+          <ul class="page-header__site-list site-list">
+            <li class="site-list__item"><a class="site-list__button" href="/">Назад</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+  <main class="vaccination-page">
+    <div class="page_layout">
+      <section class="vac-block">
+        <div class="vac-block__container">
+          <div class="vac-block__header">
+            <h3 class="title">Прививки: </h3>
+            <!--/*@thymesVar id="vaccination" type="ru.fedorova.vaccination.controller.VaccinationController"*/-->
+            <form class="vac-block__finder" th:action="@{/vaccination}" method="post" th:object="${vaccinations}" >
+                <input class="field" type="text" name="filterParam">
+                <button class="button button--vac-finder" type="submit">Найти</button>
+            </form>
+          </div>
+
+
+            <div class="container">
+                <div class="row">
+                    <label style="margin-right: 1.5em" for="each"></label>
+                    <table id="each">
+                        <!--/*@thymesVar id="vaccinations" type="ru.fedorova.vaccination.controller.VaccinationController"*/-->
+                        <tr th:action="@{/vaccination}" method="get"  th:each="vaccination : ${vaccinations}">
+                            <td th:text="${vaccination}"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+          </div>
+        </section>
+    </div>
+      </main>
+</body>
+</html>

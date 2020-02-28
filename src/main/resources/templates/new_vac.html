@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+        function formSubmission(f) {
+            if (confirm("Сохранить данные о вакцинации?"))
+                f.submit();
+        }
+    </script>
+    <link rel="stylesheet" th:href="@{static/css/style.css}"> 
+    <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+</head>
+
+<body class="page">
+
+
+  <header class="page-header">
+    <div class="page_layout">
+      <div class="page-header__container">
+        <a class="page_header__logo" href="index.html">
+          <svg class="page_header__logo-img" width="70" height="21"></svg>
+        </a>
+        <nav class="page-header__nav" id="navbar">
+          <ul class="page-header__site-list site-list">
+            <li class="site-list__item"><a class="site-list__button" href="/">Назад</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-page">
+    <!-- <div class="page_layout"> -->
+        <section class="reg-block">
+          <div class="reg-block__container">
+
+                <!--/*@thymesVar id="vaccination" type="ru.fedorova.vaccination.controller.NewVacController"*/-->
+                <form class="reg-form new-vac" th:action="@{/new_vac}" onsubmit="formSubmission(this);return false;" method="post" th:object="${vaccination}" >
+                    <h1 class="reg-block__title title">Новая прививка: </h1>
+                    <ul class="reg-form__list">
+                      <li class="reg-form__item"><input class="field" placeholder="СНИЛС" name="SNILS" type="text" required/></li>
+                      <li class="reg-form__item--agree">Согласие: <input name="consent" type="radio" value="true"> Да
+                                  <input name="consent" type="radio" value="false"> Нет</li>
+                      <li class="reg-form__item--time"><span>Дата:</span><input name="date" type="date" required/></li>
+
+                      <li class="reg-form__item"><select class="field" required size="1" name="drug_id">
+                          <option disabled selected value="">Выберите препарат</option>
+                          <option value="1">Ультрикс</option>
+                          <option value="2">Инфлексал</option>
+                          <option value="3">Флюарикс</option>
+                          <option value="4">Агриппал</option>
+                          <option value="5">Флюваксин</option>
+                          <option value="6">Флю-М</option>
+                          <option value="7">Вианвак</option>
+                        </select></li>
+
+                      <li class="reg-form__item"><select class="field" required size="1" name="worker_id">
+                          <option disabled selected value="">Выберите работника</option>
+                          <option value="1">Ярцев С.Е.</option>
+                          <option value="2">Паськов Р.В.</option>
+                      </select></li>
+
+                      <input class="button" type="submit" value="Принять">
+                          <input class="button" type="reset" value="Сбросить">
+                    </ul>
+                </form>
+
+
+          </div>
+          </section>
+    <!-- </div> -->
+  </main>
+
+</body>
+</html>
