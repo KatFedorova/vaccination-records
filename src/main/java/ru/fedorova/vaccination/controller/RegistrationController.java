@@ -29,7 +29,6 @@ public class RegistrationController {
     public String addUser(@RequestParam(name = "name") String name,
                           @RequestParam(name = "password") String password) {
         User user = new User(name, password, 2, "USER");
-       // User userFromDb = userRepository.findByName(name);
         if (name != null && !name.isEmpty()) {
             userRepository.save(user);
         } else {

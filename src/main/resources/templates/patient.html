@@ -31,11 +31,11 @@
         <h1 class="reg-block__title title">Новый пациент</h1>
         <form th:action="@{/patient}" method="post" th:object="${patient}">
           <ul class="reg-form__list" >
-            <li class="reg-form__item"><input class="field" name="surname" placeholder="Фамилия" type="text" required/></li>
-            <li class="reg-form__item"><input class="field" name="name" placeholder="Имя" type="text" required></li>
-            <li class="reg-form__item"><input class="field" name="patronymic" placeholder="Отчество" type="text" required></li>
-            <li class="reg-form__item"><input class="field" name="SNILS" placeholder="СНИЛС" type="text" required></li>
-            <li  class="reg-form__item--time">Дата рождения: <input name="birthDate" type="date" required></li>
+            <li class="reg-form__item"><input class="field" th:field="${patient.surname}" name="surname" placeholder="Фамилия" type="text" required/></li>
+            <li class="reg-form__item"><input class="field" th:field="${patient.name}" name="name" placeholder="Имя" type="text" required></li>
+            <li class="reg-form__item"><input class="field" th:field="${patient.patronymic}" name="patronymic" placeholder="Отчество" type="text" required></li>
+            <li class="reg-form__item"><input class="field" th:field="${patient.SNILS}" name="SNILS" placeholder="СНИЛС" type="text" required></li>
+            <li  class="reg-form__item--time">Дата рождения: <input th:field="${patient.birthDate}" name="birthDate" type="date" required></li>
             <input class="button" type="submit" value="Добавить">
             <input class="button" type="reset" value="Сбросить"></p>
           </ul>

@@ -18,18 +18,17 @@ public class NewVacController {
     private VaccinationRepository vaccinationRepository;
 
 
-
     @GetMapping(value = "/new_vac")
     public String showVaccinations() {
         return "/new_vac";
     }
 
-    @PostMapping (value = "/new_vac")
-    public String addVaccination(@RequestParam String SNILS,
-                                 @RequestParam Boolean consent,
-                                 @RequestParam String date,
-                                 @RequestParam String drug_id,
-                                 @RequestParam String worker_id) {
+    @PostMapping(value = "/new_vac")
+    public String addVaccination(@RequestParam(name = "SNILS") String SNILS,
+                                 @RequestParam(name = "consent") Boolean consent,
+                                 @RequestParam(name = "date") String date,
+                                 @RequestParam(name = "drug_id") String drug_id,
+                                 @RequestParam(name = "worker_id") String worker_id) {
         VaccinationService vaccinationService = new VaccinationService();
         VaccinationDTO vaccinationDTO = new VaccinationDTO(SNILS, consent, date, drug_id, worker_id);
         Vaccination vaccination = vaccinationService.vacDtoToEntity(vaccinationDTO);
@@ -38,6 +37,3 @@ public class NewVacController {
 
     }
 }
-
-
-//Map<String, Object> model
