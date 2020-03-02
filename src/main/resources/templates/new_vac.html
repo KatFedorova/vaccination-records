@@ -40,12 +40,12 @@
                 <form class="reg-form new-vac" th:action="@{/new_vac}" onsubmit="formSubmission(this);return false;" method="post" th:object="${vaccination}" >
                     <h1 class="reg-block__title title">Новая прививка: </h1>
                     <ul class="reg-form__list">
-                      <li class="reg-form__item"><input class="field" placeholder="СНИЛС" name="SNILS" type="text" required/></li>
+                      <li class="reg-form__item"><input class="field" placeholder="СНИЛС" name="snils" type="text" required/></li>
                       <li class="reg-form__item--agree">Согласие: <input name="consent" type="radio" value="true"> Да
                                   <input name="consent" type="radio" value="false"> Нет</li>
                       <li class="reg-form__item--time"><span>Дата:</span><input name="date" type="date" required/></li>
 
-                      <li class="reg-form__item"><select class="field" required size="1" name="drug_id">
+                      <li class="reg-form__item"><select class="field" required size="1" name="drugId">
                           <option disabled selected value="">Выберите препарат</option>
                           <option value="1">Ультрикс</option>
                           <option value="2">Инфлексал</option>
@@ -56,7 +56,7 @@
                           <option value="7">Вианвак</option>
                         </select></li>
 
-                      <li class="reg-form__item"><select class="field" required size="1" name="worker_id">
+                      <li class="reg-form__item"><select class="field" required size="1" name="workerId">
                           <option disabled selected value="">Выберите работника</option>
                           <option value="1">Ярцев С.Е.</option>
                           <option value="2">Паськов Р.В.</option>

@@ -1,6 +1,6 @@
 package ru.fedorova.vaccination.service;
 
-public class SNILS_VerifyService {
+public class SnilsVerifyService {
         /*
     СНИЛС имеет вид: «XXX-XXX-XXX YY», где XXX-XXX-XXX — собственно номер, а YY — контрольное число. Алгоритм формирования контрольного числа СНИЛС таков:
     1) Проверка контрольного числа Страхового номера проводится только для номеров больше номера 001-001-998
@@ -11,21 +11,21 @@ public class SNILS_VerifyService {
     2.4) Если сумма равна 100 или 101, то контрольное число равно 00
     2.5) Если сумма больше 101, то сумма делится по остатку на 101 и контрольное число определяется остатком от деления аналогично пунктам 2.3*/
 
-    public boolean SNILSChecksumCalculation(Long SNILS_l) {
-        String SNILS = Long.toString(SNILS_l);
-        return SNILSChecksumCalculation(SNILS);
+    public boolean SnilsChecksumCalculation(Long snilsLong) {
+        String snils = Long.toString(snilsLong);
+        return SnilsChecksumCalculation(snils);
     }
 
-    public boolean SNILSChecksumCalculation(String SNILS) {
+    public boolean SnilsChecksumCalculation(String snils) {
         boolean result;
         int checksum;
-        String SNILSnum;
+        String snilsNum;
         int resultSum = 0;
 
-        checksum = Integer.parseInt(SNILS.substring(9));
-        SNILSnum = SNILS.substring(0, 9);
+        checksum = Integer.parseInt(snils.substring(9));
+        snilsNum = snils.substring(0, 9);
         int reversIndex = 9;
-        char[] numArray = SNILSnum.toCharArray();
+        char[] numArray = snilsNum.toCharArray();
         for (int i = 0; i < 9; i++) {
             String s = Character.toString(numArray[i]);
             int n = Integer.parseInt(s);
@@ -35,7 +35,6 @@ public class SNILS_VerifyService {
         result = SNILSchecksumCompare(checksum, resultSum);
         return result;
 
-
     }
 
     public boolean SNILSchecksumCompare(int checksum, int resultSum) {
@@ -43,9 +42,8 @@ public class SNILS_VerifyService {
         if (resultSum < 100) {
             result = resultSum == checksum;
         } else if ((resultSum == 100) || (resultSum == 101)) {
-            return result = 00 == checksum;
+            return result = (00 == checksum);
         } else if (resultSum > 101) {
-
             return result = SNILSchecksumCompare(checksum, resultSum % 101);
         } else result = false;
         return result;

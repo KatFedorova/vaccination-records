@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class MainController {
-
-
     @GetMapping(value = "/")
     public String mainForm(Model model) {
         model.addAttribute("user", new User());

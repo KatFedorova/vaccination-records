@@ -19,7 +19,7 @@ public class MedicalWorker implements Serializable {
     @Column(name = "position")
     private String position;
     @Column(name = "medical_institution_code")
-    private Integer medical_institution_code;
+    private Integer medicalInstitutionCode;
 
     public MedicalWorker() {
     }
@@ -31,12 +31,12 @@ public class MedicalWorker implements Serializable {
         this.position = position;
     }
 
-    public MedicalWorker(String name, String surname, String patronymic, String position, Integer medical_institution_code) {
+    public MedicalWorker(String name, String surname, String patronymic, String position, Integer medicalInstitutionCode) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.position = position;
-        this.medical_institution_code = medical_institution_code;
+        this.medicalInstitutionCode = medicalInstitutionCode;
     }
 
     public String getName() {
@@ -71,11 +71,11 @@ public class MedicalWorker implements Serializable {
         this.position = position;
     }
 
-    public Integer getMedical_institution_code() {
-        return medical_institution_code;
+    public Integer getMedicalInstitutionCode() {
+        return medicalInstitutionCode;
     }
 
-    public void setMedical_institution_code(Integer medical_institution_code) {
-        this.medical_institution_code = medical_institution_code;
+    public void setMedicalInstitutionCode(Integer medicalInstitutionCode) {
+        this.medicalInstitutionCode = medicalInstitutionCode;
     }
 }

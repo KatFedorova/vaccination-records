@@ -5,14 +5,14 @@ public class MedicalWorkerDTO {
     private String surname;
     private String patronymic;
     private String position;
-    private String medical_institution_code;
+    private String medicalInstitutionCode;
 
-    public MedicalWorkerDTO(String name, String surname, String patronymic, String position, String medical_institution_code) {
+    public MedicalWorkerDTO(String name, String surname, String patronymic, String position, String medicalInstitutionCode) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.position = position;
-        this.medical_institution_code = medical_institution_code;
+        this.medicalInstitutionCode = medicalInstitutionCode;
     }
 
     public String getName() {
@@ -47,11 +47,11 @@ public class MedicalWorkerDTO {
         this.position = position;
     }
 
-    public String getMedical_institution_code() {
-        return medical_institution_code;
+    public String getMedicalInstitutionCode() {
+        return medicalInstitutionCode;
     }
 
-    public void setMedical_institution_code(String medical_institution_code) {
-        this.medical_institution_code = medical_institution_code;
+    public void setMedicalInstitutionCode(String medicalInstitutionCode) {
+        this.medicalInstitutionCode = medicalInstitutionCode;
     }
 }

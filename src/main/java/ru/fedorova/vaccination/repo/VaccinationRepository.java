@@ -7,5 +7,5 @@ import ru.fedorova.vaccination.model.entity.Vaccination;
 import java.util.List;
 
 public interface VaccinationRepository extends CrudRepository<Vaccination, Integer> {
-    List<Vaccination> findBySNILS(Long SNILS);
+    List<Vaccination> findBySnils(Long snils);
 }

@@ -10,9 +10,9 @@ public class Vaccination implements Serializable {
     @Column(name = "vaccination_id")
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer vaccination_id;
+    private Integer vaccinationId;
     @Column(name = "SNILS")
-    private Long SNILS;
+    private Long snils;
     @Column(name = "consent")
     private Boolean consent;
     @Column(name = "vac_date")
@@ -25,8 +25,8 @@ public class Vaccination implements Serializable {
 
     public Vaccination() {
     }
-    public Vaccination(Long SNILS, Boolean consent, Date date, Integer drugId, Integer medicalWorkerId) {
-        this.SNILS = SNILS;
+    public Vaccination(Long snils, Boolean consent, Date date, Integer drugId, Integer medicalWorkerId) {
+        this.snils = snils;
         this.consent = consent;
         this.date = date;
         this.drugId = drugId;
@@ -37,12 +37,12 @@ public class Vaccination implements Serializable {
 
 
 
-    public Long getSNILS() {
-        return SNILS;
+    public Long getSnils() {
+        return snils;
     }
 
-    public void setSNILS(Long SNILS) {
-        this.SNILS = SNILS;
+    public void setSnils(Long SNILS) {
+        this.snils = SNILS;
     }
 
     public Boolean getConsent() {
@@ -84,7 +84,7 @@ public class Vaccination implements Serializable {
         return "Прививка: " +
                 "согласие - " + consentToStr +
                 ", дата: " + date +
-                ", СНИЛС: " + SNILS +
+                ", СНИЛС: " + snils +
                 ", препарат: " + drugId +
                 ", работник: " + medicalWorkerId;
     }

@@ -1,18 +1,24 @@
 package ru.fedorova.vaccination.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.fedorova.vaccination.model.dto.PatientDTO;
 import ru.fedorova.vaccination.model.entity.Patient;
+import ru.fedorova.vaccination.repo.PatientRepository;
 
 
 import java.sql.Date;
-
+@Component
 public class PatientService {
+    @Autowired
+    PatientRepository patientRepository;
+
     public Patient patDtoToEntity(PatientDTO patientDTO) {
         Patient patient = new Patient();
 
         try {
-            Long SNILS = Long.parseLong(patientDTO.getSNILS());
-            patient.setSNILS(SNILS);
+            Long snils = Long.parseLong(patientDTO.getSnils());
+            patient.setSnils(snils);
 
             String name = patientDTO.getName();
             patient.setName(name);
@@ -26,12 +32,17 @@ public class PatientService {
             Date birthDate = Date.valueOf(patientDTO.getBirthDate());
             patient.setBirthDate(birthDate);
 
-            Integer medical_institution_code = Integer.parseInt(patientDTO.getMedical_institution_code());
-            patient.setMedical_institution_code(medical_institution_code);
+            Integer medicalInstitutionCode = Integer.parseInt(patientDTO.getMedicalInstitutionCode());
+            patient.setMedicalInstitutionCode(medicalInstitutionCode);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return patient;
+    }
+
+    public void savePatient(PatientDTO patientDTO) {
+        Patient patient = patDtoToEntity(patientDTO);
+        patientRepository.save(patient);
     }
 }

@@ -24,13 +24,13 @@ public class NewVacController {
     }
 
     @PostMapping(value = "/new_vac")
-    public String addVaccination(@RequestParam(name = "SNILS") String SNILS,
+    public String addVaccination(@RequestParam(name = "snils") String snils,
                                  @RequestParam(name = "consent") Boolean consent,
                                  @RequestParam(name = "date") String date,
-                                 @RequestParam(name = "drug_id") String drug_id,
-                                 @RequestParam(name = "worker_id") String worker_id) {
+                                 @RequestParam(name = "drugId") String drugId,
+                                 @RequestParam(name = "workerId") String workerId) {
         VaccinationService vaccinationService = new VaccinationService();
-        VaccinationDTO vaccinationDTO = new VaccinationDTO(SNILS, consent, date, drug_id, worker_id);
+        VaccinationDTO vaccinationDTO = new VaccinationDTO(snils, consent, date, drugId, workerId);
         Vaccination vaccination = vaccinationService.vacDtoToEntity(vaccinationDTO);
         vaccinationRepository.save(vaccination);
         return "/new_vac";

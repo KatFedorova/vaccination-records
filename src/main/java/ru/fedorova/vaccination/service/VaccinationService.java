@@ -26,8 +26,8 @@ public class VaccinationService {
     public Vaccination vacDtoToEntity(VaccinationDTO vaccinationDTO) {
         Vaccination vaccination = new Vaccination();
         try {
-            Long SNILS = Long.parseLong(vaccinationDTO.getSNILS());
-            vaccination.setSNILS(SNILS);
+            Long snils = Long.parseLong(vaccinationDTO.getSnils());
+            vaccination.setSnils(snils);
 
             vaccination.setConsent(vaccinationDTO.getConsent());
 
@@ -50,19 +50,19 @@ public class VaccinationService {
         Drug drug = drugRepository.findByDrugId(vaccination.getDrugId());
         MedicalWorker medicalWorker = medicalWorkerRepository.findByMedicalWorkerId(vaccination.getMedicalWorkerId());
 
-        String SNILS = String.valueOf(vaccination.getSNILS());
+        String snils = String.valueOf(vaccination.getSnils());
         Boolean consent = vaccination.getConsent();
         String date = vaccination.getDate().toString();
-        String drug_name = drug.getName();
-        String worker_name = medicalWorker.getSurname() + " " + medicalWorker.getName();
+        String drugName = drug.getName();
+        String workerName = medicalWorker.getSurname() + " " + medicalWorker.getName();
 
 
-        VaccinationDTO vaccinationDTO = new VaccinationDTO(SNILS, consent, date, drug_name, worker_name);
+        VaccinationDTO vaccinationDTO = new VaccinationDTO(snils, consent, date, drugName, workerName);
         return vaccinationDTO;
     }
 
-    public List <VaccinationDTO> findBySNILS(String filterParam) {
-        Long SNILS = Long.parseLong(filterParam);
+    public List <VaccinationDTO> findBySnils(String filterParam) {
+        Long snils = Long.parseLong(filterParam);
 
 
         Iterable <Vaccination> vaccinations;
@@ -70,7 +70,7 @@ public class VaccinationService {
 
 
         if (filterParam != null && ! filterParam.isEmpty()) {
-            vaccinations = vaccinationRepository.findBySNILS(SNILS);
+            vaccinations = vaccinationRepository.findBySnils(snils);
         } else {
             vaccinations = vaccinationRepository.findAll();
         }

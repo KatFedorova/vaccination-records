@@ -6,28 +6,28 @@ import java.io.Serializable;
 
 public class VaccinationDTO implements Serializable {
 
-    private String SNILS;
+    private String snils;
     private Boolean consent;
     private String date;
     private String drugId;
     private String medicalWorkerId;
-    private String medical_institution_code;
+    private String medicalInstitutionCode;
 
-    public VaccinationDTO(String SNILS, Boolean consent, String date, String drugId, String medicalWorkerId) {
+    public VaccinationDTO(String snils, Boolean consent, String date, String drugId, String medicalWorkerId) {
         this.consent = consent;
         this.date = date;
-        this.SNILS = SNILS;
+        this.snils = snils;
         this.drugId = drugId;
         this.medicalWorkerId = medicalWorkerId;
 
     }
 
-    public String getSNILS() {
-        return SNILS;
+    public String getSnils() {
+        return snils;
     }
 
-    public void setSNILS(String SNILS) {
-        this.SNILS = SNILS;
+    public void setSnils(String snils) {
+        this.snils = snils;
     }
 
     public Boolean getConsent() {
@@ -62,12 +62,12 @@ public class VaccinationDTO implements Serializable {
         this.medicalWorkerId = medicalWorkerId;
     }
 
-    public String getMedical_institution_code() {
-        return medical_institution_code;
+    public String getMedicalInstitutionCode() {
+        return medicalInstitutionCode;
     }
 
-    public void setMedical_institution_code(String medical_institution_code) {
-        this.medical_institution_code = medical_institution_code;
+    public void setMedicalInstitutionCode(String medicalInstitutionCode) {
+        this.medicalInstitutionCode = medicalInstitutionCode;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class VaccinationDTO implements Serializable {
         return "Прививка: " +
                 "согласие - " + consentToStr +
                 ", дата: " + date +
-                ", СНИЛС: " + SNILS +
+                ", СНИЛС: " + snils +
                 ", препарат: " + drugId +
                 ", работник: " + medicalWorkerId;
     }

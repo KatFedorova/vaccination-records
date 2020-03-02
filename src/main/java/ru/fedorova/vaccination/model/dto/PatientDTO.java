@@ -1,36 +1,55 @@
 package ru.fedorova.vaccination.model.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
 public class PatientDTO implements Serializable {
 
-    private String SNILS;
+    @NotNull
+    private String snils;
+    @NotNull
+    @NotBlank
+    @Size(min = 2, max = 16)
     private String name;
+    @NotNull
+    @NotBlank
+    @Size(min = 2, max = 16)
     private String surname;
     private String patronymic;
+    @NotNull
     private String birthDate;
-    private String medical_institution_code;
+    private String medicalInstitutionCode;
 
     public PatientDTO() {
     }
 
-    public PatientDTO(String SNILS, String name, String surname, String patronymic, String birthDate, String medical_institution_code) {
-        this.SNILS = SNILS;
+    public PatientDTO(String snils, String name, String surname, String patronymic, String birthDate, String medicalInstitutionCode) {
+        this.snils = snils;
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.birthDate = birthDate;
-        this.medical_institution_code = medical_institution_code;
+        this.medicalInstitutionCode = medicalInstitutionCode;
+    }
+
+    public PatientDTO(String snils, String name, String surname, String patronymic, String birthDate) {
+        this.snils = snils;
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.birthDate = birthDate;
     }
 
 
-    public String getSNILS() {
-        return SNILS;
+    public String getSnils() {
+        return snils;
     }
 
-    public void setSNILS(String SNILS) {
-        this.SNILS = SNILS;
+    public void setSnils(String snils) {
+        this.snils = snils;
     }
 
     public String getName() {
@@ -65,10 +84,23 @@ public class PatientDTO implements Serializable {
         this.birthDate = birthDate;
     }
 
-    public String getMedical_institution_code() {
-        return medical_institution_code;
+    public String getMedicalInstitutionCode() {
+        return medicalInstitutionCode;
     }
 
-    public void setMedical_institution_code(String medical_institution_code) {
-        this.medical_institution_code = medical_institution_code;
-    }}
+    public void setMedicalInstitutionCode(String medicalInstitutionCode) {
+        this.medicalInstitutionCode = medicalInstitutionCode;
+    }
+
+    @Override
+    public String toString() {
+        return "PatientDTO{" +
+                "SNILS='" + snils + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", birthDate='" + birthDate + '\'' +
+                ", medical_institution_code='" + medicalInstitutionCode + '\'' +
+                '}';
+    }
+}

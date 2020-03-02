@@ -29,13 +29,19 @@
     <section class="reg-block">
       <div class="reg-block__container">
         <h1 class="reg-block__title title">Новый пациент</h1>
-        <form th:action="@{/patient}" method="post" th:object="${patient}">
+
+        <!--/*@thymesVar id="patientDTO" type="ru.fedorova.vaccination.controller.PatientController"*/-->
+        <form th:action="@{/patient}" th:object="${patient}" method="post">
           <ul class="reg-form__list" >
-            <li class="reg-form__item"><input class="field" th:field="${patient.surname}" name="surname" placeholder="Фамилия" type="text" required/></li>
-            <li class="reg-form__item"><input class="field" th:field="${patient.name}" name="name" placeholder="Имя" type="text" required></li>
-            <li class="reg-form__item"><input class="field" th:field="${patient.patronymic}" name="patronymic" placeholder="Отчество" type="text" required></li>
-            <li class="reg-form__item"><input class="field" th:field="${patient.SNILS}" name="SNILS" placeholder="СНИЛС" type="text" required></li>
-            <li  class="reg-form__item--time">Дата рождения: <input th:field="${patient.birthDate}" name="birthDate" type="date" required></li>
+            <li class="reg-form__item"><input class="field" th:field="*{surname}" placeholder="Фамилия" type="text" required/></li>
+            <li class="reg-form__item"><input class="field" th:field="*{name}" placeholder="Имя" type="text" required></li>
+            <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
+            <li class="reg-form__item"><input class="field" th:field="*{patronymic}" placeholder="Отчество" type="text" required></li>
+            <td th:if="${#fields.hasErrors('patronymic')}" th:errors="*{patronymic}">Patronymic Error</td>
+            <li class="reg-form__item"><input class="field" th:field="*{snils}" placeholder="СНИЛС" type="text" required></li>
+            <td th:if="${#fields.hasErrors('snils')}" th:errors="*{snils}">SNILS Error</td>
+            <li  class="reg-form__item--time">Дата рождения: <input th:field="*{birthDate}" type="date" required></li>
+            <td th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}">birthDate Error</td>
             <input class="button" type="submit" value="Добавить">
             <input class="button" type="reset" value="Сбросить"></p>
           </ul>

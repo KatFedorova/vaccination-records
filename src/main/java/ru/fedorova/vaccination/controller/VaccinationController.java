@@ -24,7 +24,6 @@ public class VaccinationController {
     @GetMapping(value = "/vaccination")
     public String showVaccinations(Map<String, Object> model) {
         Iterable <Vaccination> vaccinations = vaccinationRepository.findAll();
-
         model.put("vaccinations", vaccinations);
         return "/vaccination";
     }
@@ -43,7 +42,7 @@ public class VaccinationController {
    //     }
 
      VaccinationService vaccinationService = new VaccinationService();
-      List<VaccinationDTO> vaccinationViews = vaccinationService.findBySNILS(filterParam);
+      List<VaccinationDTO> vaccinationViews = vaccinationService.findBySnils(filterParam);
         model.put("vaccinations", vaccinationViews);
          return "/vaccination";
 
