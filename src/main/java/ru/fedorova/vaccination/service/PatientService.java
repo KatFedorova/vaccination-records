@@ -16,7 +16,6 @@ public class PatientService {
     public Patient patDtoToEntity(PatientDTO patientDTO) {
         Patient patient = new Patient();
 
-        try {
             Long snils = Long.parseLong(patientDTO.getSnils());
             patient.setSnils(snils);
 
@@ -34,9 +33,6 @@ public class PatientService {
 
             Integer medicalInstitutionCode = Integer.parseInt(patientDTO.getMedicalInstitutionCode());
             patient.setMedicalInstitutionCode(medicalInstitutionCode);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         return patient;
     }

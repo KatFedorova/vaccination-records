@@ -13,6 +13,7 @@ import ru.fedorova.vaccination.repo.VaccinationRepository;
 
 import java.sql.Date;
 import java.util.List;
+
 @Component
 public class VaccinationService {
     @Autowired
@@ -26,23 +27,20 @@ public class VaccinationService {
 
     public Vaccination vacDtoToEntity(VaccinationDTO vaccinationDTO) {
         Vaccination vaccination = new Vaccination();
-        try {
-            Long snils = Long.parseLong(vaccinationDTO.getSnils());
-            vaccination.setSnils(snils);
 
-            vaccination.setConsent(vaccinationDTO.getConsent());
+        Long snils = Long.parseLong(vaccinationDTO.getSnils());
+        vaccination.setSnils(snils);
 
-            Date date = Date.valueOf(vaccinationDTO.getDate());
-            vaccination.setDate(date);
+        vaccination.setConsent(vaccinationDTO.getConsent());
 
-            Integer drugId = Integer.parseInt(vaccinationDTO.getDrugId());
-            vaccination.setDrugId(drugId);
+        Date date = Date.valueOf(vaccinationDTO.getDate());
+        vaccination.setDate(date);
 
-            Integer medicalWorkerId = Integer.parseInt(vaccinationDTO.getMedicalWorkerId());
-            vaccination.setMedicalWorkerId(medicalWorkerId);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Integer drugId = Integer.parseInt(vaccinationDTO.getDrugId());
+        vaccination.setDrugId(drugId);
+
+        Integer medicalWorkerId = Integer.parseInt(vaccinationDTO.getMedicalWorkerId());
+        vaccination.setMedicalWorkerId(medicalWorkerId);
 
         return vaccination;
     }
@@ -62,15 +60,15 @@ public class VaccinationService {
         return vaccinationDTO;
     }
 
-    public List <VaccinationDTO> findBySnils(String filterParam) {
+    public List<VaccinationDTO> findBySnils(String filterParam) {
         Long snils = Long.parseLong(filterParam);
 
 
-        Iterable <Vaccination> vaccinations;
-        List <VaccinationDTO> vaccinationViews = null;
+        Iterable<Vaccination> vaccinations;
+        List<VaccinationDTO> vaccinationViews = null;
 
 
-        if (filterParam != null && ! filterParam.isEmpty()) {
+        if (filterParam != null && !filterParam.isEmpty()) {
             vaccinations = vaccinationRepository.findBySnils(snils);
         } else {
             vaccinations = vaccinationRepository.findAll();
@@ -82,7 +80,7 @@ public class VaccinationService {
             VaccinationDTO vaccinationView = vacEntityToView(v);
             vaccinationViews.add(vaccinationView);
         }
-        List <VaccinationDTO> vac = (List <VaccinationDTO>) vaccinationViews;
+        List<VaccinationDTO> vac = (List<VaccinationDTO>) vaccinationViews;
 
         return vac;
     }
@@ -97,8 +95,6 @@ public class VaccinationService {
         Vaccination vaccination = vacDtoToEntity(vaccinationDTO);
         vaccinationRepository.save(vaccination);
     }
-
-
 
 
 }

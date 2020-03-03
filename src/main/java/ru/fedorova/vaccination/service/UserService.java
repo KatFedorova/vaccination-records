@@ -13,15 +13,13 @@ public class UserService {
 
     public User userDtoToEntity(UserDTO userDTO) {
         User user = new User();
-        try {
+
             String name = userDTO.getName();
             user.setName(name);
             String password = userDTO.getPassword();
             user.setPassword(password);
             user.setRole("USER");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+
         return user;
     }
 
