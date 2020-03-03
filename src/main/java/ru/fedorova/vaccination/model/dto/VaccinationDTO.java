@@ -5,6 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -12,7 +13,8 @@ import java.io.Serializable;
 public class VaccinationDTO implements Serializable {
     @NotNull
     @NotBlank
-    @Size(min = 11, max = 11, message = "Введите 11 цифр СНИЛС")
+    @Size (min = 11, max = 11, message = "Введите 11 знаков")
+    @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
     private String snils;
     @NotNull
     private Boolean consent;
@@ -20,8 +22,10 @@ public class VaccinationDTO implements Serializable {
     @DateTimeFormat(pattern = "dd.MM.yyyy")
     private String date;
     @NotNull
+    @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
     private String drugId;
     @NotNull
+    @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
     private String medicalWorkerId;
     private String medicalInstitutionCode;
 
