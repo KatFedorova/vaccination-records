@@ -1,17 +1,32 @@
 package ru.fedorova.vaccination.model.dto;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 
 public class VaccinationDTO implements Serializable {
-
+    @NotNull
+    @NotBlank
+    @Size(min = 11, max = 11, message = "Введите 11 цифр СНИЛС")
     private String snils;
+    @NotNull
     private Boolean consent;
+    @NotNull
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private String date;
+    @NotNull
     private String drugId;
+    @NotNull
     private String medicalWorkerId;
     private String medicalInstitutionCode;
+
+    public VaccinationDTO() {
+    }
 
     public VaccinationDTO(String snils, Boolean consent, String date, String drugId, String medicalWorkerId) {
         this.consent = consent;
@@ -19,7 +34,6 @@ public class VaccinationDTO implements Serializable {
         this.snils = snils;
         this.drugId = drugId;
         this.medicalWorkerId = medicalWorkerId;
-
     }
 
     public String getSnils() {

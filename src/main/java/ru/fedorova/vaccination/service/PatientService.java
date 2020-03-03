@@ -42,6 +42,7 @@ public class PatientService {
     }
 
     public void savePatient(PatientDTO patientDTO) {
+        patientDTO.setMedicalInstitutionCode("720001");
         Patient patient = patDtoToEntity(patientDTO);
         patientRepository.save(patient);
     }

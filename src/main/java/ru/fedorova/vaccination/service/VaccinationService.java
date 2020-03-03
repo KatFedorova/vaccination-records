@@ -2,6 +2,7 @@ package ru.fedorova.vaccination.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import ru.fedorova.vaccination.model.dto.VaccinationDTO;
 import ru.fedorova.vaccination.model.entity.Drug;
 import ru.fedorova.vaccination.model.entity.MedicalWorker;
@@ -12,7 +13,7 @@ import ru.fedorova.vaccination.repo.VaccinationRepository;
 
 import java.sql.Date;
 import java.util.List;
-
+@Component
 public class VaccinationService {
     @Autowired
     DrugRepository drugRepository;
@@ -85,6 +86,19 @@ public class VaccinationService {
 
         return vac;
     }
+
+    public Iterable<Vaccination> findAll() {
+        Iterable<Vaccination> vaccinations = vaccinationRepository.findAll();
+        return vaccinations;
+    }
+
+
+    public void saveVaccination(VaccinationDTO vaccinationDTO) {
+        Vaccination vaccination = vacDtoToEntity(vaccinationDTO);
+        vaccinationRepository.save(vaccination);
+    }
+
+
 
 
 }

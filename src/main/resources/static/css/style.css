@@ -103,6 +103,10 @@
   color: white;
 }
 
+.reg-form__error-text {
+  color: white;
+}
+
 .reg-form__item--time span {
   margin-right: 10px;
 }

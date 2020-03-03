@@ -17,34 +17,20 @@ import java.util.Map;
 @Controller
 public class VaccinationController {
     @Autowired
-    private VaccinationRepository vaccinationRepository;
-
-
+    VaccinationService vaccinationService;
 
     @GetMapping(value = "/vaccination")
     public String showVaccinations(Map<String, Object> model) {
-        Iterable <Vaccination> vaccinations = vaccinationRepository.findAll();
-        model.put("vaccinations", vaccinations);
+        model.put("vaccinations", vaccinationService.findAll());
         return "/vaccination";
     }
 
-     @PostMapping(value = "/vaccination")
-     public String vaccinationFilter(@RequestParam(name = "filterParam", defaultValue = "15465719692") String filterParam,
-                                     Map<String, Iterable> model) {
-   //     Long SNILS = Long.parseLong(filterParam);
-//
-//
-   //     Iterable<Vaccination> vaccinations;
-   //     if (filterParam != null && !filterParam.isEmpty()) {
-   //         vaccinations = vaccinationRepository.findBySNILS(SNILS);
-   //     } else {
-   //         vaccinations = vaccinationRepository.findAll();
-   //     }
-
-     VaccinationService vaccinationService = new VaccinationService();
-      List<VaccinationDTO> vaccinationViews = vaccinationService.findBySnils(filterParam);
+    @PostMapping(value = "/vaccination")
+    public String vaccinationFilter(@RequestParam(name = "filterParam", defaultValue = "15465719692") String filterParam,
+                                    Map<String, Iterable> model) {
+        List<VaccinationDTO> vaccinationViews = vaccinationService.findBySnils(filterParam);
         model.put("vaccinations", vaccinationViews);
-         return "/vaccination";
+        return "/vaccination";
 
-     }
+    }
 }

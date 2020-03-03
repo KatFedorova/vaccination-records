@@ -37,8 +37,10 @@
                     <ul class="reg-form__list" >
 
                       <li class="reg-form__item site-list__item--name">
-                      <input class="field reg-field--name" type="text" name="name" placeholder="Имя пользователя"required></li>
-                      <li class="reg-form__item site-list__item--password"><input class="field reg-field--pass" type="password" name="password" placeholder="Пароль"required></li>
+                      <input class="field reg-field--name" type="text" th:field="*{name}" placeholder="Имя пользователя"required></li>
+                      <li class="reg-form__error-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</li>
+                      <li class="reg-form__item site-list__item--password"><input class="field reg-field--pass" type="password" th:field="*{password}" placeholder="Пароль"required></li>
+                      <li class="reg-form__error-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</li>
                       <li class="reg-form__item"><input class="field" type="text" placeholder="Фамилия"></li>
                       <li class="reg-form__item"><input class="field" type="text" placeholder="Имя"></li>
                       <li class="reg-form__item"><input class="field" type="text" placeholder="Отчество"></li>

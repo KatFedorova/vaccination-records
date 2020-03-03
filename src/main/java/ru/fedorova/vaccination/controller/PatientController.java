@@ -28,12 +28,11 @@ public class PatientController {
 
     @PostMapping(value = "/patient")
     public String addPatient(@Valid @ModelAttribute("patient") PatientDTO patientDTO, BindingResult bindingResult) {
-        patientDTO.setMedicalInstitutionCode("720001");
         if (bindingResult.hasErrors()) {
             return "/patient";
         } else {
             patientService.savePatient(patientDTO);
-            return "/patient";
+            return "redirect:/patient";
         }
     }
 
