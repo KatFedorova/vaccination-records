@@ -2,6 +2,7 @@ package ru.fedorova.vaccination.model.dto;
 
 
 import org.springframework.format.annotation.DateTimeFormat;
+import ru.fedorova.vaccination.service.Snils;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,7 @@ public class VaccinationDTO implements Serializable {
     @NotBlank
     @Size (min = 11, max = 11, message = "Введите 11 знаков")
     @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
+    @Snils(message = "Проверьте контрольную сумму СНИЛС")
     private String snils;
     @NotNull
     private Boolean consent;

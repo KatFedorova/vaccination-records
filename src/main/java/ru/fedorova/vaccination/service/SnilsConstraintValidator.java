@@ -1,6 +1,9 @@
 package ru.fedorova.vaccination.service;
 
-public class SnilsVerifyService {
+import javax.validation.ConstraintValidator;
+import javax.validation.ConstraintValidatorContext;
+
+public class SnilsConstraintValidator implements ConstraintValidator<Snils, String> {
         /*
     СНИЛС имеет вид: «XXX-XXX-XXX YY», где XXX-XXX-XXX — собственно номер, а YY — контрольное число. Алгоритм формирования контрольного числа СНИЛС таков:
     1) Проверка контрольного числа Страхового номера проводится только для номеров больше номера 001-001-998
@@ -10,13 +13,14 @@ public class SnilsVerifyService {
     2.3) Если сумма меньше 100, то контрольное число равно самой сумме
     2.4) Если сумма равна 100 или 101, то контрольное число равно 00
     2.5) Если сумма больше 101, то сумма делится по остатку на 101 и контрольное число определяется остатком от деления аналогично пунктам 2.3*/
+        @Override
+        public void initialize(Snils snils) {
+            //To change body of implemented methods use File | Settings | File Templates.
+        }
 
-    public boolean SnilsChecksumCalculation(Long snilsLong) {
-        String snils = Long.toString(snilsLong);
-        return SnilsChecksumCalculation(snils);
-    }
 
-    public boolean SnilsChecksumCalculation(String snils) {
+    @Override
+    public boolean isValid(String snils, ConstraintValidatorContext cxt) {
         boolean result;
         int checksum;
         String snilsNum;
