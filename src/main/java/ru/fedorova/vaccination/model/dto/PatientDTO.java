@@ -1,110 +1,45 @@
 package ru.fedorova.vaccination.model.dto;
 
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 import java.io.Serializable;
 
-
+@Getter
+@Setter
+@RequiredArgsConstructor
 public class PatientDTO implements Serializable {
-
+    @NonNull
     @NotNull
     @NotBlank
-    @Size (min = 11, max = 11, message = "Введите 11 цифр СНИЛС")
+    @Size(min = 11, max = 11, message = "Введите 11 цифр СНИЛС")
     @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
     private String snils;
+
+    @NonNull
     @NotNull
     @NotBlank
     @Size(min = 2, max = 16)
     private String name;
+
+    @NonNull
     @NotNull
     @NotBlank
     @Size(min = 2, max = 16)
     private String surname;
+
+    @NonNull
     private String patronymic;
+
+    @NonNull
     @NotNull
-    @DateTimeFormat(pattern="dd.MM.yyyy")
+    @DateTimeFormat(pattern = "dd.MM.yyyy")
     private String birthDate;
+
     private String medicalInstitutionCode;
 
-    public PatientDTO() {
-    }
-
-    public PatientDTO(String snils, String name, String surname, String patronymic, String birthDate, String medicalInstitutionCode) {
-        this.snils = snils;
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.birthDate = birthDate;
-        this.medicalInstitutionCode = medicalInstitutionCode;
-    }
-
-    public PatientDTO(String snils, String name, String surname, String patronymic, String birthDate) {
-        this.snils = snils;
-        this.name = name;
-        this.surname = surname;
-        this.patronymic = patronymic;
-        this.birthDate = birthDate;
-    }
-
-
-    public String getSnils() {
-        return snils;
-    }
-
-    public void setSnils(String snils) {
-        this.snils = snils;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public String getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
-
-    public String getMedicalInstitutionCode() {
-        return medicalInstitutionCode;
-    }
-
-    public void setMedicalInstitutionCode(String medicalInstitutionCode) {
-        this.medicalInstitutionCode = medicalInstitutionCode;
-    }
-
-    @Override
-    public String toString() {
-        return "PatientDTO{" +
-                "SNILS='" + snils + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", birthDate='" + birthDate + '\'' +
-                ", medical_institution_code='" + medicalInstitutionCode + '\'' +
-                '}';
-    }
 }

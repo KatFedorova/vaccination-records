@@ -1,12 +1,12 @@
 package ru.fedorova.vaccination.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.UserDTO;
 import ru.fedorova.vaccination.model.entity.User;
 import ru.fedorova.vaccination.repo.UserRepository;
 
-@Component
+@Service
 public class UserService {
     @Autowired
     UserRepository userRepository;

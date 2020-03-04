@@ -2,7 +2,9 @@ package ru.fedorova.vaccination.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.VaccinationDTO;
 import ru.fedorova.vaccination.model.entity.Drug;
 import ru.fedorova.vaccination.model.entity.MedicalWorker;
@@ -14,7 +16,7 @@ import ru.fedorova.vaccination.repo.VaccinationRepository;
 import java.sql.Date;
 import java.util.List;
 
-@Component
+@Service
 public class VaccinationService {
     @Autowired
     DrugRepository drugRepository;
@@ -60,7 +62,7 @@ public class VaccinationService {
         return vaccinationDTO;
     }
 
-    public List<VaccinationDTO> findBySnils(String filterParam) {
+    public List<VaccinationDTO> findBySnils(String filterParam, Pageable pageable) {
         Long snils = Long.parseLong(filterParam);
 
 
@@ -69,7 +71,7 @@ public class VaccinationService {
 
 
         if (filterParam != null && !filterParam.isEmpty()) {
-            vaccinations = vaccinationRepository.findBySnils(snils);
+            vaccinations = vaccinationRepository.findBySnils(snils,pageable);
         } else {
             vaccinations = vaccinationRepository.findAll();
         }
@@ -85,8 +87,8 @@ public class VaccinationService {
         return vac;
     }
 
-    public Iterable<Vaccination> findAll() {
-        Iterable<Vaccination> vaccinations = vaccinationRepository.findAll();
+    public Page <Vaccination> findAll(Pageable pageable) {
+        Page <Vaccination> vaccinations = vaccinationRepository.findAll(pageable);
         return vaccinations;
     }
 

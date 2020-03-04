@@ -1,14 +1,13 @@
 package ru.fedorova.vaccination.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.PatientDTO;
 import ru.fedorova.vaccination.model.entity.Patient;
 import ru.fedorova.vaccination.repo.PatientRepository;
 
-
 import java.sql.Date;
-@Component
+@Service
 public class PatientService {
     @Autowired
     PatientRepository patientRepository;
