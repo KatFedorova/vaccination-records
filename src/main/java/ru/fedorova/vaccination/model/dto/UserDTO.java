@@ -1,6 +1,7 @@
 package ru.fedorova.vaccination.model.dto;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -9,6 +10,7 @@ import javax.validation.constraints.*;
 @Getter
 @Size
 @RequiredArgsConstructor
+@NoArgsConstructor
 public class UserDTO {
     @NonNull
     @NotNull

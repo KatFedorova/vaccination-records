@@ -2,6 +2,7 @@ package ru.fedorova.vaccination.model.dto;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import org.springframework.format.annotation.DateTimeFormat;
 import ru.fedorova.vaccination.service.Snils;
@@ -13,6 +14,7 @@ import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Data
+@NoArgsConstructor
 public class VaccinationDTO implements Serializable {
     @NonNull
     @NotNull
