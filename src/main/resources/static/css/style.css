@@ -1,0 +1,344 @@
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,500|Open+Sans&display=swap');
+
+
+
+.page {
+  background-color: #F3EFFE;
+  padding: 0;
+  margin:0;
+
+  font-family: 'Open Sans';
+  font-size: 15px;
+}
+
+.reg-block {
+  /* position: absolute;
+  top: 0; */
+  width: 100%;
+  height: 100vh;
+  /* top: 40%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%); */
+  background-color: rgba(40, 40, 110, 0.95);
+  z-index: 112;
+}
+
+.reg-block__container {
+  margin: auto;
+  padding-top: 200px;
+  width: 500px;
+  text-align: center;
+}
+
+.page-header__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.field {
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.field:last-of-type {
+  margin-bottom: 20px;
+}
+
+.reg-form__list {
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+
+.reg-block__title {
+  color: white;
+}
+
+
+.reg-form__close {
+  background-image: url("../img/close.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  cursor: pointer;
+}
+
+.reg-button:hover {
+  opacity: 0.7;
+}
+
+.reg-form__item {
+ /* width: 100%; */
+ display: inline-block;
+ width: 100%;
+}
+
+.site-list__item--name,
+.site-list__item--password {
+    width: 230px;
+}
+
+.reg-form__item--time {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.reg-form__item--agree {
+  color: white;
+}
+
+.reg-form__error-text {
+  color: white;
+}
+
+.reg-form__item--time span {
+  margin-right: 10px;
+}
+
+.reg-block .reg-form__item--time {
+  width: 100%;
+}
+
+.site-list__item--password {
+  margin-bottom: 40px;
+}
+
+.reg-field--name,
+.reg-field--pass {
+  background-color: #F3EFFE;
+
+}
+
+.active {
+  display: block;
+}
+
+.site-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-list__button {
+
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  opacity: 0.7;
+}
+
+.site-list__button:hover {
+    opacity: 1;
+}
+
+
+
+.page-header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  margin: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: white;
+  z-index: 20;
+}
+
+.page-header__nav {
+  margin: 0;
+
+}
+
+.page_header__logo-img {
+  background-image: url("../img/revac-logo.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.page_layout {
+  margin: auto;
+  width: 1024px;
+}
+
+.main-block,
+.user-block,
+.vac-block {
+  position: relative;
+  height: 100vh;
+}
+
+.main-block {
+ z-index: 1;
+}
+
+.user-image {
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.main-block__container,
+.user-block__container {
+  width: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.user-block__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.vac-block__header .button--vac-finder {
+  padding: 5px 5px;
+}
+
+.vac-block__header .field {
+  margin-bottom: 10px;
+}
+
+.vac-block__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.vac-block__finder {
+  text-align: right;
+}
+
+.vac-block__container {
+  margin-top: 100px;
+}
+
+.user-control {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.user-control .user-control__item {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.user-control__item .user-control__button {
+  width: 100%;
+}
+
+
+
+.main-block__title {
+
+}
+
+.title {
+  font-family: 'Montserrat Alternates';
+  font-weight: 500;
+  font-size: 40px;
+  display: block;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.main-form__container {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.main-form__container legend {
+  color: #4D4D4D;
+  margin-bottom: 20px;
+}
+
+.main-form__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 20px 20px;
+  width: 160px;
+  background-color: #7C6BEF;
+  border-radius: 30px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 0;
+
+  color: white;
+  text-decoration: none;
+}
+
+.site-list__logout {
+  background-color: transparent;
+  text-transform: uppercase;
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.site-list__logout:hover {
+  opacity: 1;
+}
+
+.button:hover {
+  background-color: #6551E4;
+}
+
+.button:active {
+  color: #F3EFFE;
+}
+
+.button--reg {
+  padding: 0;
+  margin-top: 10px;
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 14px;
+
+  color: gray;
+}
+
+.button--reg:hover {
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.button--reg:active {
+  background-color: transparent;
+  color: black;
+}
+
+.user-control {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}

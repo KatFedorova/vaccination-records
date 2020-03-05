@@ -1,0 +1,56 @@
+﻿<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Getting Started: Handling Form Submission</title>
+  <link rel="stylesheet" th:href="@{static/css/style.css}">
+  <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+</head>
+
+
+<body class="page">
+
+<header class="page-header">
+  <div class="page_layout">
+    <div class="page-header__container">
+      <a class="page_header__logo" href="index.html">
+        <svg class="page_header__logo-img" width="70" height="21"></svg>
+      </a>
+      <nav class="page-header__nav" id="navbar">
+        <ul class="page-header__site-list site-list">
+          <li class="site-list__item">
+            <form th:action="@{/logout}" method="post">
+              <input class="site-list__logout" type="submit" value="Выход"/>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+
+  <main class="user-page">
+    <div class="page_layout">
+      <section class="user-block">
+        <div class="user-block__container">
+          <!-- <form th:action="@{/logout}" method="post">
+            <input class="site-list__button" type="submit" value="Выход"/>
+          </form> -->
+          <img class="user-image" name="image" src="../static/img/user-1.jpg" width="250">
+
+          <span class="title" th:text=" ${user.name}"></span>
+          <ul class="user-control">
+            <li class="user-control__item"><a class="user-control__button button" href="/">Аккаунт</a></li>
+            <li class="user-control__item"><a class="user-control__button button" href="/patient">Новый пациент</a></li>
+            <li class="user-control__item"><a class="user-control__button button" href="/new_vac">Новая вакцинация</a></li>
+            <li class="user-control__item"><a class="user-control__button button" href="/vaccination">Список прививок</a></li>
+          </ul>
+
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+
+</html>

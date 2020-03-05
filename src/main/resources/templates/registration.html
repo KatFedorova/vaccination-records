@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Getting Started: Handling Form Submission</title>
+  <link rel="stylesheet" th:href="@{static/css/style.css}">
+  <!-- <link rel="stylesheet" href="../static/css/style.css"> -->
+</head>
+
+
+<body class="page">
+
+  <header class="page-header">
+    <div class="page_layout">
+      <div class="page-header__container">
+        <a class="page_header__logo" href="index.html">
+          <svg class="page_header__logo-img" width="70" height="21"></svg>
+        </a>
+        <nav class="page-header__nav" id="navbar">
+          <ul class="page-header__site-list site-list">
+            <li class="site-list__item"><a class="site-list__button" href="/login">Назад</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+
+    <main class="main-page">
+      <!-- <div class="page_layout"> -->
+          <section class="reg-block">
+            <div class="reg-block__container">
+                  <h1 class="reg-block__title title">Регистрация</h1>
+
+                  <form class="reg-form" th:action="@{/registration}" method="post" th:object="${user}">
+                    <!--/*@thymesVar id="user" type="ru.fedorova.vaccination.controller.RegistrationController"*/-->
+                    <ul class="reg-form__list" >
+
+                      <li class="reg-form__item site-list__item--name">
+                      <input class="field reg-field--name" type="text" th:field="*{name}" placeholder="Имя пользователя"required></li>
+                      <li class="reg-form__error-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">name Error</li>
+                      <li class="reg-form__item site-list__item--password"><input class="field reg-field--pass" type="password" th:field="*{password}" placeholder="Пароль"required></li>
+                      <li class="reg-form__error-text" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">password Error</li>
+                      <li class="reg-form__item"><input class="field" type="text" placeholder="Фамилия"></li>
+                      <li class="reg-form__item"><input class="field" type="text" placeholder="Имя"></li>
+                      <li class="reg-form__item"><input class="field" type="text" placeholder="Отчество"></li>
+                      <li class="reg-form__item"><input class="field" type="text" placeholder="Должность"></li>
+                      <li class="reg-form__item"><input class="field" type="text" placeholder="Организация"></li>
+                    </ul>
+
+<!--                    <a class="button button&#45;&#45;regnew" href="#">Отправить</a>-->
+                    <p><input class="button button--regnew" type="submit" value="Отправить">
+                  </form>
+            </div>
+            </section>
+      <!-- </div> -->
+    </main>
+  </body>
+
+  </html>
+
+
+
+
+<!-- <!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Регистрация</h1>
+<p>Пользователь: <input type="text" /></p>
+<p>Пароль: <input type="text"></p>
+<p>***</p>
+<p>Фамилия: <input type="text" /></p>
+<p>Имя: <input type="text"></p>
+<p>Отчество: <input type="text"></p>
+<p>Должность: <input type="text"></p>
+<p>Организация: <input type="text"></p>
+</body>
+</html> -->
