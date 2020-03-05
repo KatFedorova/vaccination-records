@@ -16,7 +16,7 @@ import javax.validation.Valid;
 @Controller
 public class NewVacController {
     @Autowired
-    VaccinationService vaccinationService;
+    private VaccinationService vaccinationService;
 
 
     @GetMapping(value = "/new_vac")

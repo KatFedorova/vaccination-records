@@ -4,6 +4,7 @@ package ru.fedorova.vaccination.model.dto;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import ru.fedorova.vaccination.service.Snils;
 
@@ -15,6 +16,7 @@ import java.io.Serializable;
 
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class VaccinationDTO implements Serializable {
     @NonNull
     @NotNull
@@ -40,7 +42,7 @@ public class VaccinationDTO implements Serializable {
 
     @NonNull
     @NotNull
-    @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
+   // @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
     private String medicalWorkerId;
     private String medicalInstitutionCode;
 

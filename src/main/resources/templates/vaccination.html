@@ -1,6 +1,7 @@
 
 <!DOCTYPE HTML>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -50,6 +51,26 @@
                     </table>
                 </div>
             </div>
+
+
+
+            <div class="pagination">
+    <!--/*@thymesVar id="hasPrevious" type="ru.fedorova.vaccination.controller.VaccinationController"*/-->
+    <span th:object="${vaccinations}" th:if="${vaccinations.hasPrevious()}">
+        <a th:href="@{/vaccination(page=${vaccinations.number-1},size=${vaccinations.size})}">Назад</a>
+    </span>
+                <th:block th:each="i: ${#numbers.sequence(0, vaccinations.totalPages - 1)}">
+                    <span th:if="${vaccinations.number == i}" class="selected">[[${i}+1]]</span>
+                    <span th:unless="${vaccinations.number == i}">
+             <a th:href="@{/vaccination(page=${i},size=${vaccinations.size})}">[[${i}+1]]</a>
+        </span>
+                </th:block>
+                <span th:if="${vaccinations.hasNext()}">
+        <a th:href="@{/vaccination(page=${vaccinations.number+1},size=${vaccinations.size})}">Далее</a>
+    </span>
+            </div>
+
+
           </div>
         </section>
     </div>
