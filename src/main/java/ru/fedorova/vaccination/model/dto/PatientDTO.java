@@ -6,6 +6,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.validation.constraints.*;
 import java.io.Serializable;
 
+/**Класс представляет собой модель для передачи данных от представления в модель объекта БД и наоборот
+ *
+ */
 @Data
 @NoArgsConstructor
 public class PatientDTO implements Serializable {

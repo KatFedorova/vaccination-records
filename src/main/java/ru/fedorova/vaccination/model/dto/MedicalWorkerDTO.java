@@ -5,6 +5,11 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Класс представляет собой модель для передачи данных от представления в модель объекта БД и наоборот
+ * Геттеры и сеттеры генерируются автоматически
+ * Аннотация @RequiredArgsConstructor создаёт конструктор для полей с аннотацией @NonNull
+ */
 @Getter
 @Setter
 @RequiredArgsConstructor

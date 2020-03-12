@@ -14,19 +14,29 @@ import ru.fedorova.vaccination.repo.MedicalWorkerRepository;
 import ru.fedorova.vaccination.repo.VaccinationRepository;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+/**
+ * Сервис-класс для манипуляций с Прививками
+ */
 @Service
 public class VaccinationService {
     @Autowired
-    DrugRepository drugRepository;
+    private DrugRepository drugRepository;
 
     @Autowired
-    MedicalWorkerRepository medicalWorkerRepository;
+    private MedicalWorkerRepository medicalWorkerRepository;
 
     @Autowired
     private VaccinationRepository vaccinationRepository;
 
+    /**
+     *  Конвертирует объект vaccinationDTO в Vaccination (парсит все поля)
+     * @param vaccinationDTO
+     * @return Vaccination
+     */
     public Vaccination vacDtoToEntity(VaccinationDTO vaccinationDTO) {
         Vaccination vaccination = new Vaccination();
 
@@ -47,33 +57,44 @@ public class VaccinationService {
         return vaccination;
     }
 
+    /**  Конвертирует объект Vaccination в vaccinationDTO
+     *
+     * @param vaccination
+     * @return VaccinationDTO
+     */
     public VaccinationDTO vacEntityToView(Vaccination vaccination) {
-        Drug drug = drugRepository.findByDrugId(vaccination.getDrugId());
-        MedicalWorker medicalWorker = medicalWorkerRepository.findByMedicalWorkerId(vaccination.getMedicalWorkerId());
+      Drug drug = drugRepository.findByDrugId(vaccination.getDrugId());
+      MedicalWorker medicalWorker = medicalWorkerRepository.findByMedicalWorkerId(vaccination.getMedicalWorkerId());
 
         String snils = String.valueOf(vaccination.getSnils());
         Boolean consent = vaccination.getConsent();
         String date = vaccination.getDate().toString();
-        String drugName = drug.getName();
-        String workerName = medicalWorker.getSurname() + " " + medicalWorker.getName();
+        String drugName = vaccination.getDrugId().toString();
+        String workerName = vaccination.getMedicalWorkerId().toString();
 
-
-        VaccinationDTO vaccinationDTO = new VaccinationDTO(snils, consent, date, drugName, workerName);
-        return vaccinationDTO;
+        return new VaccinationDTO(snils, consent, date, drugName, workerName);
     }
 
-    public List<VaccinationDTO> findBySnils(String filterParam, Pageable pageable) {
+    /**
+     * Принимает СНИЛС(строка) в качестве параметра фильтра,
+     * если фильтр не пустой, возвращает найденные Прививки в виде страницы;
+     * если фильтр пустой, возвращает все прививки в виде страницы
+     * @param filterParam
+     * @param pageable
+     * @return Page <VaccinationDTO>
+     */
+    public Page <VaccinationDTO> findBySnils(String filterParam, Pageable pageable) {
         Long snils = Long.parseLong(filterParam);
 
 
-        Iterable<Vaccination> vaccinations;
-        List<VaccinationDTO> vaccinationViews = null;
+        Page<Vaccination> vaccinations;
+      List<VaccinationDTO> vaccinationViews = null;
 
 
         if (filterParam != null && !filterParam.isEmpty()) {
             vaccinations = vaccinationRepository.findBySnils(snils,pageable);
         } else {
-            vaccinations = vaccinationRepository.findAll();
+            vaccinations = vaccinationRepository.findAll(pageable);
         }
 
 
@@ -82,21 +103,28 @@ public class VaccinationService {
             VaccinationDTO vaccinationView = vacEntityToView(v);
             vaccinationViews.add(vaccinationView);
         }
-        List<VaccinationDTO> vac = (List<VaccinationDTO>) vaccinationViews;
+        Page<VaccinationDTO> vac =  (Page<VaccinationDTO>)vaccinationViews;
 
         return vac;
     }
 
+    /**
+     * Ищет в базе все прививки, возвращает в виде страницы
+     * @param pageable
+     * @return
+     */
     public Page <Vaccination> findAll(Pageable pageable) {
         Page <Vaccination> vaccinations = vaccinationRepository.findAll(pageable);
         return vaccinations;
     }
 
-
+    /**
+     * Принимает объект vaccinationDTO, конвертирует в Vaccination и сохраняет в БД
+     * @param vaccinationDTO
+     */
     public void saveVaccination(VaccinationDTO vaccinationDTO) {
         Vaccination vaccination = vacDtoToEntity(vaccinationDTO);
         vaccinationRepository.save(vaccination);
     }
-
 
 }

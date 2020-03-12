@@ -14,6 +14,19 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
+/**
+ * Класс представляет собой модель для передачи данных от представления в модель объекта БД и наоборот
+ * строковое поле snils проверяется на:
+ * -не пустое, не пробелы, длина 11, содержит только цифры, контрольная сумма верна
+ * булево поле consent проверяется на не пустое значение
+ * поле date проверяется на маску ввода даты дд.мм.гггг
+ * строковое поле drugId проверяется на:
+ * -не пустое, содержит только цифры
+ *
+ * Геттеры и сеттеры генерируются автоматически
+ * Аннотация @NoArgsConstructor создаёт конструктор без параметров
+ * Аннотация @RequiredArgsConstructor создаёт конструктор для полей с аннотацией @NonNull
+ */
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
@@ -42,11 +55,13 @@ public class VaccinationDTO implements Serializable {
 
     @NonNull
     @NotNull
-   // @Pattern(regexp = "^[0-9]+", message = "Введите цифры")
     private String medicalWorkerId;
     private String medicalInstitutionCode;
 
-
+    /**
+     * Метод возвращает строку со всеми параметрами Прививки на русском языке
+     * @return
+     */
     @Override
     public String toString() {
         String consentToStr = (consent) ? "да" : "нет";

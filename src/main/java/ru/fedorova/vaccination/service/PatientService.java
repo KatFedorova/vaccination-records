@@ -5,13 +5,22 @@ import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.PatientDTO;
 import ru.fedorova.vaccination.model.entity.Patient;
 import ru.fedorova.vaccination.repo.PatientRepository;
-
+/**
+ * Сервис-класс для манипуляций с Пациентами
+ *
+ */
 import java.sql.Date;
 @Service
 public class PatientService {
     @Autowired
     PatientRepository patientRepository;
 
+
+    /**
+     * Конвертирует объект patientDTO в Patient (парсит все поля)
+     * @param patientDTO
+     * @return Patient
+     */
     public Patient patDtoToEntity(PatientDTO patientDTO) {
         Patient patient = new Patient();
 
@@ -36,6 +45,10 @@ public class PatientService {
         return patient;
     }
 
+    /**
+     * Принимает обект patientDTO, конвертирует в Patient и сохраняет в БД
+     * @param patientDTO
+     */
     public void savePatient(PatientDTO patientDTO) {
         patientDTO.setMedicalInstitutionCode("720001");
         Patient patient = patDtoToEntity(patientDTO);
