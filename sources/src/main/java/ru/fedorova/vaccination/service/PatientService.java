@@ -1,5 +1,6 @@
 package ru.fedorova.vaccination.service;
 
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.PatientDTO;
@@ -10,6 +11,10 @@ import ru.fedorova.vaccination.repo.PatientRepository;
  *
  */
 import java.sql.Date;
+import java.sql.SQLException;
+import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.SQLNonTransientException;
+
 @Service
 public class PatientService {
     @Autowired
@@ -52,6 +57,10 @@ public class PatientService {
     public void savePatient(PatientDTO patientDTO) {
         patientDTO.setMedicalInstitutionCode("720001");
         Patient patient = patDtoToEntity(patientDTO);
-        patientRepository.save(patient);
+        try {
+            patientRepository.save(patient);
+        } catch (RuntimeException e) {
+            System.err.println("Ошибка записи в бд");
+        }
     }
 }
