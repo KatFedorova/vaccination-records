@@ -1,6 +1,7 @@
 package ru.fedorova.vaccination.model.dto;
 
 import lombok.*;
+import org.hibernate.validator.constraints.UniqueElements;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
@@ -41,4 +42,15 @@ public class PatientDTO implements Serializable {
 
     private String medicalInstitutionCode;
 
+    @Override
+    public String toString() {
+        return "Пациент(" +
+                "СНИЛС: '" + snils + '\'' +
+                ", Имя: '" + name + '\'' +
+                ", Фамилия: '" + surname + '\'' +
+                ", Отчество: '" + patronymic + '\'' +
+                ", Дата рождения: '" + birthDate + '\'' +
+                ", Медучреждение: '" + medicalInstitutionCode + '\'' +
+                ')';
+    }
 }

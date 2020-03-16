@@ -62,7 +62,8 @@ public class PatientService {
         try {
             patientRepository.save(patient);
         } catch (DataIntegrityViolationException e) {
-            System.err.println("Ошибка записи пациента в бд, СНИЛС: " + patient.getSnils());
+            System.err.println("Ошибка записи пациента в БД");
+            System.err.println(patientDTO.toString());
             System.err.println(e.getMostSpecificCause());
         }
     }
