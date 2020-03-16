@@ -1,7 +1,9 @@
 package ru.fedorova.vaccination.service;
 
+import com.mysql.cj.protocol.Message;
 import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.PatientDTO;
 import ru.fedorova.vaccination.model.entity.Patient;
@@ -59,8 +61,9 @@ public class PatientService {
         Patient patient = patDtoToEntity(patientDTO);
         try {
             patientRepository.save(patient);
-        } catch (RuntimeException e) {
-            System.err.println("Ошибка записи в бд");
+        } catch (DataIntegrityViolationException e) {
+            System.err.println("Ошибка записи пациента в бд, СНИЛС: " + patient.getSnils());
+            System.err.println(e.getMostSpecificCause());
         }
     }
 }
