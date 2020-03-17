@@ -1,21 +1,19 @@
 package ru.fedorova.vaccination.service;
 
-import com.mysql.cj.protocol.Message;
-import org.hibernate.HibernateException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import ru.fedorova.vaccination.model.dto.PatientDTO;
 import ru.fedorova.vaccination.model.entity.Patient;
 import ru.fedorova.vaccination.repo.PatientRepository;
+
+import java.sql.Date;
+
 /**
  * Сервис-класс для манипуляций с Пациентами
- *
  */
-import java.sql.Date;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
-import java.sql.SQLNonTransientException;
 
 @Service
 public class PatientService {
@@ -28,6 +26,7 @@ public class PatientService {
      * @param patientDTO
      * @return Patient
      */
+
     public Patient patDtoToEntity(PatientDTO patientDTO) {
         Patient patient = new Patient();
 
@@ -52,8 +51,12 @@ public class PatientService {
         return patient;
     }
 
+
+    Logger logger = LoggerFactory.getLogger(PatientService.class);
+
     /**
      * Принимает обект patientDTO, конвертирует в Patient и сохраняет в БД
+     *
      * @param patientDTO
      */
     public void savePatient(PatientDTO patientDTO) {
@@ -62,9 +65,7 @@ public class PatientService {
         try {
             patientRepository.save(patient);
         } catch (DataIntegrityViolationException e) {
-            System.err.println("Ошибка записи пациента в БД");
-            System.err.println(patientDTO.toString());
-            System.err.println(e.getMostSpecificCause());
+            logger.debug("Ошибка записи пациента в БД, " + e.getMostSpecificCause());
         }
     }
 }

@@ -1,0 +1,4 @@
+2020-03-16 17:02:52.682 ERROR 16620 --- [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry '15408827876' for key 'patient.SNILS_UNIQUE'
+2020-03-16 17:02:52.744 ERROR 16620 --- [http-nio-8080-exec-7] r.f.vaccination.service.PatientService   : Ошибка записи пациента в БД, java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15408827876' for key 'patient.SNILS_UNIQUE'
+2020-03-16 17:47:25.471 ERROR 15048 --- [http-nio-8080-exec-7] o.h.engine.jdbc.spi.SqlExceptionHelper   : Duplicate entry '15408827876' for key 'patient.SNILS_UNIQUE'
+2020-03-16 17:47:25.581 DEBUG 15048 --- [http-nio-8080-exec-7] r.f.vaccination.service.PatientService   : Ошибка записи пациента в БД, java.sql.SQLIntegrityConstraintViolationException: Duplicate entry '15408827876' for key 'patient.SNILS_UNIQUE'
